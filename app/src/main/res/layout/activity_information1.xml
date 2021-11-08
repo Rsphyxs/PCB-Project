@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:weightSum="5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/prevbutton"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="#00FFFFFF"
+            android:tint="#FFFFFF"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <ImageButton
+            android:id="@+id/nextbutton"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#00FFFFFF"
+            android:rotation="180"
+            android:tint="#FFFFFF"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="#00FFFFFF"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#FFFFFF"
+        android:gravity="center"
+        android:text="@string/information1"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="4"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/pcinformation1" />
+
+
+
+</LinearLayout>

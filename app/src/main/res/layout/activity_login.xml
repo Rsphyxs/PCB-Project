@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/prevbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="#00FFFFFF"
+            android:tint="#000000"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/sign_in"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/welcome_back" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/editPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:gravity="fill|left"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editPass"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#000000"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/sign_in"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            app:iconTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="315dp"
+            android:text="@string/don_t_have_an_account"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_centerHorizontal="true"
+
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:translationY="1dp"
+            app:iconTint="#FFFFFF" />
+
+        <Button
+            android:id="@+id/skipfornow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:drawableTint="#FFFFFF"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/skip_for_now"
+            android:textAllCaps="false"
+            android:textColor="#2196F3"
+            android:textSize="20sp"
+            app:iconTint="#FFFFFF" />
+
+    </RelativeLayout>
+
+</ScrollView>
