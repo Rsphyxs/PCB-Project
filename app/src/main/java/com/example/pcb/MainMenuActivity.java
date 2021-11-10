@@ -1,7 +1,9 @@
 package com.example.pcb;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,23 +12,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
+
 
 public class MainMenuActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private TextView txt_nama;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        txt_nama = findViewById(R.id.nav1);
-
-        int oi = 9000;
-
-
-
-
+        navigationView = (NavigationView)findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        txt_nama = (TextView) headerView.findViewById(R.id.darvin);
+        txt_nama.setText("Ahmad Zufar A");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -38,18 +40,22 @@ public class MainMenuActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        txt_nama.setText("haduh");
-
-
     }
 
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            txt_nama.setText("Nama");
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void addData(){
+        setContentView(R.layout.navigation_header);
+
+
     }
 
 }
