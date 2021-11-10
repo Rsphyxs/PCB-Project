@@ -14,4 +14,15 @@
     <string name="skip_for_now">Skip for Now</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="ini_main_menu">Ini Main Menu</string>
+
+    <!--to toggle the open close button
+        of the navigation drawer-->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="account">Account</string>
+    <string name="saved_design">Saved Design</string>
+    <string name="test">test</string>
+    <string name="navigation_drawer_open">Open Navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="coding_in_flow">Coding in Flow</string>
 </resources>

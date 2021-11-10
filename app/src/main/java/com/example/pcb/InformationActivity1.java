@@ -14,19 +14,12 @@ public class InformationActivity1 extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information1);
 
-        ImageButton prevActivity = findViewById(R.id.prevbutton);
-        prevActivity.setOnClickListener(this);
-
         ImageButton nextActivity = findViewById(R.id.nextbutton);
         nextActivity.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.prevbutton){
-            Intent moveIntent = new Intent(InformationActivity1.this, OpeningActivity.class);
-            startActivity(moveIntent);
-        }
         if (v.getId() == R.id.nextbutton) {
             Intent moveIntent = new Intent(InformationActivity1.this, InformationActivity2.class);
             startActivity(moveIntent);

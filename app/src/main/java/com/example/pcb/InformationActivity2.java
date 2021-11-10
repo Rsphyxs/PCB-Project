@@ -28,7 +28,7 @@ public class InformationActivity2 extends AppCompatActivity implements View.OnCl
             startActivity(moveIntent);
         }
         if (v.getId() == R.id.nextbutton) {
-            Intent moveIntent = new Intent(InformationActivity2.this, LoginActivity.class);
+            Intent moveIntent = new Intent(InformationActivity2.this, MainMenuActivity.class);
             startActivity(moveIntent);
         }
     }

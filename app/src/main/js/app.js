@@ -57,16 +57,36 @@ const client = new Client({
   app.post('/verif', function (request, response) {
     const username = request.body.username;
     const email = request.body.email;
-    const password = request.body.password;
     console.log(username);
     console.log(email);
-    console.log(password);
-    if (username && email && password) {
-        client.query('SELECT COUNT(username) FROM pcbTable WHERE username = $1 AND email = $2 AND password = $3', [username, email, password], function (error, results, fields) { 
+    if (username && email) {
+        client.query('SELECT COUNT(username) FROM pcbTable WHERE username = $1 OR email = $2', [username, email], function (error, results, fields) { 
           if (results.rows[0].count == 0) {
                 console.log("Username dan password tidak terdaftar");
                 response.jsonp({ success: false });
-                //response.redirect('http://localhost:210/admin.html');
+            } else {
+                console.log("Username dan password terdaftar");
+                response.jsonp({ success: true });
+            }
+            response.end();
+        });
+    } else {
+        console.log("Ga masuk");
+        response.send('Please enter Username and Password!');
+        response.end();
+    }
+  });
+
+  app.post('/login', function (request, response) {
+    const username = request.body.username;
+    const email = request.body.email;
+    console.log(username);
+    console.log(email);
+    if (username && email) {
+        client.query('SELECT COUNT(username) FROM pcbTable WHERE username = $1 AND email = $2', [username, email], function (error, results, fields) { 
+          if (results.rows[0].count == 0) {
+                console.log("Username dan password tidak terdaftar");
+                response.jsonp({ success: false });
             } else {
                 console.log("Username dan password terdaftar");
                 response.jsonp({ success: true });
@@ -90,32 +110,6 @@ const client = new Client({
         res.json(todo.rows[0]);
     } catch (err) {
         console.error(err.message);
-    }
-  });
-
-  app.post('/login', function (request, response) {
-    var email = request.body.email;
-    var password = request.body.password;
-    console.log(email);
-    console.log(password);
-    if (email && password) {
-        pool.query('SELECT COUNT(pcbTable) FROM pcb WHERE email = $1 AND password = $2', [email, password], function (error, results, fields) {
-            if (results.rows[0].count == 0) {
-                console.log("Login Gagal");
-                request.session.loggedin = true;
-                request.session.email = email;
-                response.jsonp({ success: false });
-                //response.redirect('http://localhost:210/admin.html');
-            } else {
-                console.log("Login berhasil");
-                response.jsonp({ success: true });
-            }
-            response.end();
-        });
-    } else {
-        console.log("Ga masuk");
-        response.send('Please enter Username and Password!');
-        response.end();
     }
   });
 

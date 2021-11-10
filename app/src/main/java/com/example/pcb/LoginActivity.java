@@ -5,15 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnSignup;
     private ImageButton btnPrev;
+    private EditText editEmail;
+    private EditText editPass;
     private Button btnSkip;
     private Button btnSignin;
 
@@ -21,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        editEmail = findViewById(R.id.editEmail);
+        editPass = findViewById(R.id.editPass);
 
         btnSignin = findViewById(R.id.signin);
         btnSignin.setOnClickListener(this);
@@ -34,6 +47,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.signin){
+            String dataEmail = editEmail.getText().toString().trim();
+            String dataPass = editPass.getText().toString().trim();
+            boolean isEmptyFields = false;
+            if (TextUtils.isEmpty(dataEmail)) {
+                isEmptyFields = true;
+                editEmail.setError("Field can't be empty");
+            }
+            if (TextUtils.isEmpty(dataPass)) {
+                isEmptyFields = true;
+                editPass.setError("Field can't be empty");
+            }
+            if (!isEmptyFields) {
+                Log.d("Ilhum", "Masuk enqueue");
+                CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
+                Call<Verif> call = crudInterface.verifSignin(dataEmail, dataPass);
+                call.enqueue(
+                        new Callback<Verif>() {
+                            @Override
+                            public void onResponse(Call<Verif> call, Response<Verif> response) {
+                                Verif verif = response.body();
+                                if(verif.isSuccess()==true){
+                                    Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                    Intent moveIntent = new Intent(LoginActivity.this, MainMenuActivity.class);
+                                    startActivity(moveIntent);
+                                }
+                                else{
+                                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Verif> call, Throwable t) {
+                                Log.d("ERROR: ", t.getMessage());
+                                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
+            }
+        }
         if (v.getId() == R.id.signup){
             Intent moveIntent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(moveIntent);
@@ -46,5 +99,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent moveIntent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(moveIntent);
         }
+    }
+
+    public void onBackPressed(){
+        moveTaskToBack(true);
     }
 }

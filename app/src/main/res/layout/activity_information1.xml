@@ -15,15 +15,6 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/prevbutton"
-            android:layout_width="81dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:backgroundTint="#00FFFFFF"
-            android:tint="#FFFFFF"
-            app:srcCompat="?attr/homeAsUpIndicator" />
-
-        <ImageButton
             android:id="@+id/nextbutton"
             android:layout_width="81dp"
             android:layout_height="wrap_content"

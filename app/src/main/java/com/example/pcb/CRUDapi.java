@@ -19,6 +19,9 @@ public interface CRUDapi {
 
     @FormUrlEncoded
     @POST("verif/")
-    Call<Verif> verifSignup(@Field("username") String username, @Field("email") String email, @Field("password") String password );
+    Call<Verif> verifSignup(@Field("username") String username, @Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("login/")
+    Call<Verif> verifSignin(@Field("username") String username, @Field("email") String email);
 }

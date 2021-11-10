@@ -56,16 +56,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 editPass.setError("Field can't be empty");
             }
             if (!isEmptyFields) {
-                Log.d("Ilhum1", "Masuk enqueue");
+                Log.d("Ilhum", "Masuk enqueue");
                 CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
-                Call<Verif> call = crudInterface.verifSignup(dataUsername, dataEmail, dataPass);
+                Call<Verif> call = crudInterface.verifSignup(dataUsername, dataEmail);
                 call.enqueue(
                         new Callback<Verif>() {
                             @Override
                             public void onResponse(Call<Verif> call, Response<Verif> response) {
                                 Verif verif = response.body();
                                 if(verif.isSuccess()==true){
-                                    Toast.makeText(SignupActivity.this, "Account exist!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignupActivity.this, "Email or Username already registered!", Toast.LENGTH_SHORT).show();
                                 }
                                 else{
                                     sendData(dataUsername, dataEmail, dataPass);
@@ -91,7 +91,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         Toast.makeText(SignupActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-                        Intent moveIntent = new Intent(SignupActivity.this, MainMenuActivity.class);
+                        Intent moveIntent = new Intent(SignupActivity.this, InformationActivity1.class);
                         startActivity(moveIntent);
                     }
 
