@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 if(verif.isSuccess()==true){
                                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                                     Intent moveIntent = new Intent(LoginActivity.this, MainMenuActivity.class);
+                                    moveIntent.putExtra(MainMenuActivity.EXTRA_EMAIL, dataEmail);
                                     startActivity(moveIntent);
                                 }
                                 else{
