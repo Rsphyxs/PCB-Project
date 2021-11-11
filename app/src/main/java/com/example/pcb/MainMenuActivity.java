@@ -28,6 +28,7 @@ import retrofit2.Response;
 public class MainMenuActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private TextView txt_nama;
+    private TextView txt_email;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
     public static List<User> list = new ArrayList<User>();
@@ -41,8 +42,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
         navigationView = (NavigationView)findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
-        txt_nama = (TextView) headerView.findViewById(R.id.darvin);
-
+        txt_nama = (TextView) headerView.findViewById(R.id.header_name);
+        txt_email = (TextView) headerView.findViewById(R.id.header_email);
 
         CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
         Call<List<User>> call = crudInterface.fetchUsername(dataEmail);
@@ -52,6 +53,7 @@ public class MainMenuActivity extends AppCompatActivity {
                          public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                              list = response.body();
                              txt_nama.setText(list.get(0).getUsername());
+                             txt_email.setText(list.get(0).getEmail());
                          }
 
                          @Override

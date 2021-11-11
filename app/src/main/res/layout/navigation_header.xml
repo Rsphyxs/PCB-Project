@@ -16,7 +16,7 @@
         android:src="@mipmap/ic_launcher_round" />
 
     <TextView
-        android:id="@+id/darvin"
+        android:id="@+id/header_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
@@ -24,7 +24,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/nav2"
+        android:id="@+id/header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="info@codinginflow.com" />
