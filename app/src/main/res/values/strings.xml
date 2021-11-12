@@ -25,4 +25,8 @@
     <string name="navigation_drawer_open">Open Navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="coding_in_flow">Coding in Flow</string>
+    <string name="categories">Categories</string>
+    <string name="case_icon">CASE</string>
+    <string name="mobo_icon">MOTHERBOARD</string>
+    <string name="procie_icon">PROCESSOR</string>
 </resources>

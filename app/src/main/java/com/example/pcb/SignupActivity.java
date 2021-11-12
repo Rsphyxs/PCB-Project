@@ -92,6 +92,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     public void onResponse(Call<User> call, Response<User> response) {
                         Toast.makeText(SignupActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
                         Intent moveIntent = new Intent(SignupActivity.this, InformationActivity1.class);
+                        moveIntent.putExtra(InformationActivity1.EXTRA_EMAIL, email);
                         startActivity(moveIntent);
                     }
 

@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 
 public class InformationActivity2 extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String EXTRA_EMAIL = "email_user";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,9 @@ public class InformationActivity2 extends AppCompatActivity implements View.OnCl
             startActivity(moveIntent);
         }
         if (v.getId() == R.id.nextbutton) {
+            String dataEmail = getIntent().getStringExtra(EXTRA_EMAIL);
             Intent moveIntent = new Intent(InformationActivity2.this, MainMenuActivity.class);
+            moveIntent.putExtra(MainMenuActivity.EXTRA_EMAIL, dataEmail);
             startActivity(moveIntent);
         }
     }

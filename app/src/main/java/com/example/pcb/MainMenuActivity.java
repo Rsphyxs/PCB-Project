@@ -29,6 +29,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private TextView txt_nama;
     private TextView txt_email;
+    private de.hdodenhof.circleimageview.CircleImageView image_user;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
     public static List<User> list = new ArrayList<User>();
@@ -44,6 +45,9 @@ public class MainMenuActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         txt_nama = (TextView) headerView.findViewById(R.id.header_name);
         txt_email = (TextView) headerView.findViewById(R.id.header_email);
+        image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
+
+        int imageUser = R.drawable.zufar;
 
         CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
         Call<List<User>> call = crudInterface.fetchUsername(dataEmail);
@@ -54,6 +58,7 @@ public class MainMenuActivity extends AppCompatActivity {
                              list = response.body();
                              txt_nama.setText(list.get(0).getUsername());
                              txt_email.setText(list.get(0).getEmail());
+                             image_user.setImageResource(imageUser);
                          }
 
                          @Override

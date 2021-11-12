@@ -10,10 +10,11 @@
     android:id="@+id/nav_header">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/header_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:shape="ring"
-        android:src="@mipmap/ic_launcher_round" />
+        android:src="@drawable/logopcb" />
 
     <TextView
         android:id="@+id/header_name"
