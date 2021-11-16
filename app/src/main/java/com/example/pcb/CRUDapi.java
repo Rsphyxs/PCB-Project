@@ -28,4 +28,7 @@ public interface CRUDapi {
     @FormUrlEncoded
     @POST("username/")
     Call<List<User>> fetchUsername(@Field("email") String email);
+
+    @POST("cpu/")
+    Call<List<CPU>> fetchCPU();
 }

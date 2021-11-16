@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +26,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
     private DrawerLayout drawer;
     private TextView txt_nama;
     private TextView txt_email;
+    private ImageButton pcb_builder;
     private de.hdodenhof.circleimageview.CircleImageView image_user;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
@@ -45,6 +47,8 @@ public class MainMenuActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         txt_nama = (TextView) headerView.findViewById(R.id.header_name);
         txt_email = (TextView) headerView.findViewById(R.id.header_email);
+        pcb_builder = findViewById(R.id.pcbuilder);
+        pcb_builder.setOnClickListener(this);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
         int imageUser = R.drawable.zufar;
@@ -97,5 +101,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void fetchUsername(String email){
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()== R.id.pcbuilder){
+            Intent moveIntent = new Intent(MainMenuActivity.this, PCBuildActivity.class);
+            startActivity(moveIntent);
+        }
     }
 }

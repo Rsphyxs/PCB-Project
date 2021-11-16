@@ -29,4 +29,21 @@
     <string name="case_icon">CASE</string>
     <string name="mobo_icon">MOTHERBOARD</string>
     <string name="procie_icon">PROCESSOR</string>
+    <string name="ram">RAM</string>
+    <string name="storage">Storage</string>
+    <string name="storage_icon">STORAGE</string>
+    <string name="gpu">GPU</string>
+    <string name="fan">FAN</string>
+    <string name="psu">PSU</string>
+    <string name="pick_your_component">Pick Your Component</string>
+    <string name="cpu">CPU</string>
+    <string name="motherboard">Motherboard</string>
+    <string name="Case">Case</string>
+    <string name="Fan">Fan</string>
+    <string-array name="spinnersample">
+        <item>Pick Your Component</item>
+        <item>Item1</item>
+        <item>Item2</item>
+        <item>Item3</item>
+    </string-array>
 </resources>

@@ -119,6 +119,16 @@ const client = new Client({
     }
   });
 
+  app.post("/cpu", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM CPU");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
   app.listen(port, () => {
     console.log(`Program sudah berjalan pada port ${port}`);
   });
