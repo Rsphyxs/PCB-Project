@@ -31,4 +31,25 @@ public interface CRUDapi {
 
     @POST("cpu/")
     Call<List<CPU>> fetchCPU();
+
+    @POST("motherboard/")
+    Call<List<Motherboard>> fetchMobo();
+
+    @POST("gpu/")
+    Call<List<GPU>> fetchGPU();
+
+    @POST("ram/")
+    Call<List<RAM>> fetchRAM();
+
+    @POST("storage/")
+    Call<List<Storage>> fetchStorage();
+
+    @POST("psu/")
+    Call<List<PSU>> fetchPSU();
+
+    @POST("casing/")
+    Call<List<Case>> fetchCase();
+
+    @POST("fan/")
+    Call<List<Fan>> fetchFan();
 }

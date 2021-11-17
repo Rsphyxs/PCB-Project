@@ -129,6 +129,78 @@ const client = new Client({
     }
   });
 
+  app.post("/motherboard", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM motherboard");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  app.post("/gpu", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM gpu");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  app.post("/ram", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM ram");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  app.post("/storage", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM storage");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  app.post("/psu", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM psu");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  
+  app.post("/casing", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM casing");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+  app.post("/fan", async (req, res) => {
+    try {
+        const todo = await client.query("SELECT * FROM fan");
+        console.log(todo.rows);
+        res.json(todo.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+  });
+
+
   app.listen(port, () => {
     console.log(`Program sudah berjalan pada port ${port}`);
   });
