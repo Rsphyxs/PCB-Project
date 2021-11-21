@@ -40,6 +40,15 @@
     <string name="motherboard">Motherboard</string>
     <string name="Case">Case</string>
     <string name="Fan">Fan</string>
+    <string name="pc_recommendation">PC Recommendation</string>
+    <string name="details">Details</string>
+    <string name="cpu_name">CPU name</string>
+    <string name="gpu_name">GPU name</string>
+    <string name="motherboard_name">Motherboard name</string>
+    <string name="ram_name">RAM name</string>
+    <string name="psu_name">PSU name</string>
+    <string name="case_name">Case name</string>
+    <string name="fan_name">Fan name</string>
     <string-array name="spinnersample">
         <item>Pick Your Component</item>
         <item>Item1</item>
