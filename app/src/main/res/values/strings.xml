@@ -49,6 +49,7 @@
     <string name="psu_name">PSU name</string>
     <string name="case_name">Case name</string>
     <string name="fan_name">Fan name</string>
+    <string name="storage_name">Storage name</string>
     <string-array name="spinnersample">
         <item>Pick Your Component</item>
         <item>Item1</item>

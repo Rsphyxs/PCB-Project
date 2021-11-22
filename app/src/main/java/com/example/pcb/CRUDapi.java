@@ -52,4 +52,7 @@ public interface CRUDapi {
 
     @POST("fan/")
     Call<List<Fan>> fetchFan();
+
+    @POST("rekomendasi/")
+    Call<List<Rekomendasi>> fetchRekomendasi();
 }

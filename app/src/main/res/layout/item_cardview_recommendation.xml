@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recommendation_cardview"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -28,6 +29,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/recommendation_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_gravity="end|bottom"
@@ -47,15 +49,15 @@
         android:text="@string/details"
         android:textSize="16sp" />
 
-    <ImageButton
-        android:id="@+id/expand_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/picture_layout"
-        android:layout_alignParentEnd="true"
-        android:backgroundTint="#00FFFFFF"
-        android:tint="#000000"
-        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+        <ImageButton
+            android:id="@+id/expand_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/picture_layout"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:tint="#000000" />
     </RelativeLayout>
 
     <LinearLayout
@@ -63,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"
@@ -131,6 +133,23 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/ram_name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/storage"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/storage_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/storage_name"
             android:textSize="18sp" />
 
         <TextView
