@@ -13,18 +13,18 @@ public class Rekomendasi {
     private int id_fan;
     private int photo;
 
-    public Rekomendasi(int id, String nama, int id_cpu, int id_gpu, int id_mobo, int id_ram, int id_storage, int id_psu, int id_case, int id_fan){
-        this.id = id;
-        this.nama = nama;
-        this.id_cpu = id_cpu;
-        this.id_gpu = id_gpu;
-        this.id_mobo = id_mobo;
-        this.id_ram = id_ram;
-        this.id_storage = id_storage;
-        this.id_psu = id_psu;
-        this.id_case = id_case;
-        this.id_fan = id_fan;
-    }
+//    public Rekomendasi(int id, String nama, int id_cpu, int id_gpu, int id_mobo, int id_ram, int id_storage, int id_psu, int id_case, int id_fan){
+//        this.id = id;
+//        this.nama = nama;
+//        this.id_cpu = id_cpu;
+//        this.id_gpu = id_gpu;
+//        this.id_mobo = id_mobo;
+//        this.id_ram = id_ram;
+//        this.id_storage = id_storage;
+//        this.id_psu = id_psu;
+//        this.id_case = id_case;
+//        this.id_fan = id_fan;
+//    }
 
     public int getId() {
         return id;

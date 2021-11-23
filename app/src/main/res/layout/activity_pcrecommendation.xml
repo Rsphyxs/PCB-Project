@@ -5,10 +5,19 @@
     android:layout_height="match_parent"
     android:id="@+id/activity_recommendation">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Choose from our Selection"
+        android:textSize="33sp"
+        android:textStyle="bold"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recommendation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         tools:listitem="@layout/item_cardview_recommendation" />
 
 </RelativeLayout>

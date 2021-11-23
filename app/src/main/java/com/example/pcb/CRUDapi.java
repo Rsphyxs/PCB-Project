@@ -1,5 +1,6 @@
 package com.example.pcb;
 
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -54,5 +55,5 @@ public interface CRUDapi {
     Call<List<Fan>> fetchFan();
 
     @POST("rekomendasi/")
-    Call<List<Rekomendasi>> fetchRekomendasi();
+    Call<ArrayList<Rekomendasi>> fetchRekomendasi();
 }

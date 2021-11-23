@@ -4,13 +4,22 @@
     android:id="@+id/recommendation_cardview"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="4dp"
+    card_view:cardCornerRadius="11dp"
+    card_view:cardElevation="5dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="3dp"
+        android:background="@drawable/shape">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -25,29 +34,32 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="4dp"
-            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             tools:src="@tools:sample/avatars" />
+
+    </FrameLayout>
 
         <TextView
             android:id="@+id/recommendation_name"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/picture_layout"
             android:layout_gravity="end|bottom"
             android:gravity="center_vertical"
             android:padding="8dp"
             android:text="@string/pc_recommendation"
             android:textSize="24sp"
-            android:textStyle="bold"/>
-    </FrameLayout>
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/picture_layout"
-        android:layout_toStartOf="@+id/expand_button"
-        android:padding="8dp"
-        android:text="@string/details"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/picture_layout"
+            android:layout_toStartOf="@+id/expand_button"
+            android:padding="8dp"
+            android:text="@string/details"
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/expand_button"
@@ -199,6 +211,7 @@
             android:id="@+id/fan_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/fan_name"
             android:textSize="18sp" />

@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardViewViewHolder>{
-    private List<Rekomendasi> listRekomendasi;
+    private ArrayList<Rekomendasi> listRekomendasi;
 
-    public CardViewAdapter(List<Rekomendasi> list) {
+    public CardViewAdapter(ArrayList<Rekomendasi> list) {
         this.listRekomendasi = list;
     }
 
@@ -53,14 +53,14 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
                 .apply(new RequestOptions().override(350, 550))
                 .into(holder.imgPhoto);
         holder.recommendationName.setText(rekomendasi.getNama());
-        holder.cpuName.setText(cpuName.get(position));
-        holder.gpuName.setText(gpuName.get(position));
-        holder.moboName.setText(moboName.get(position));
-        holder.ramName.setText(ramName.get(position));
-        holder.storageName.setText(storageName.get(position));
-        holder.psuName.setText(psuName.get(position));
-        holder.caseName.setText(caseName.get(position));
-        holder.fanName.setText(fanName.get(position));
+        holder.cpuName.setText(cpuName.get(rekomendasi.getId_cpu()));
+        holder.gpuName.setText(gpuName.get(rekomendasi.getId_gpu()));
+        holder.moboName.setText(moboName.get(rekomendasi.getId_mobo()));
+        holder.ramName.setText(ramName.get(rekomendasi.getId_ram()));
+        holder.storageName.setText(storageName.get(rekomendasi.getId_storage()));
+        holder.psuName.setText(psuName.get(rekomendasi.getId_psu()));
+        holder.caseName.setText(caseName.get(rekomendasi.getId_case()));
+        holder.fanName.setText(fanName.get(rekomendasi.getId_fan()));
 
         holder.expandButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,19 +71,13 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
                     holder.expandableSpecification.setVisibility(View.VISIBLE);
                 }
                 else{
+                    holder.expandButton.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
                     TransitionManager.beginDelayedTransition(holder.recommendationCardView, new AutoTransition());
                     holder.expandableSpecification.setVisibility(View.GONE);
                 }
 
             }
         });
-
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(holder.itemView.getContext(), "Kamu memilih " + listHero.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     @Override
