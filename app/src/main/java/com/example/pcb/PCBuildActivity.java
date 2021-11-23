@@ -1,6 +1,10 @@
 package com.example.pcb;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +27,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PCBuildActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private DrawerLayout drawer;
+    private TextView txt_nama;
+    private TextView txt_email;
+    private NavigationView navigationView;
+    private de.hdodenhof.circleimageview.CircleImageView image_user;
+    public static List<User> namaList = MainMenuActivity.list;
+
     List<CPU> CPUlist = MainMenuActivity.CPUlist;
     List<Motherboard> Mobolist = MainMenuActivity.Mobolist;
     List<GPU> GPUlist = MainMenuActivity.GPUlist;
@@ -54,6 +67,19 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pcbuild);
 
+        setTitle("Build your own PC");
+
+        navigationView = (NavigationView)findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        txt_nama = (TextView) headerView.findViewById(R.id.header_name);
+        txt_email = (TextView) headerView.findViewById(R.id.header_email);
+        image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
+        image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
+
+        txt_nama.setText(namaList.get(0).getUsername());
+        txt_email.setText(namaList.get(0).getEmail());
+        image_user.setImageResource(R.drawable.zufar);
+
         Adapter(R.id.CPUspinner, cpuName);
         Adapter(R.id.Mobospinner, moboName);
         Adapter(R.id.GPUspinner, gpuName);
@@ -62,6 +88,16 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
         Adapter(R.id.PSUspinner, psuName);
         Adapter(R.id.Casespinner, caseName);
         Adapter(R.id.FANspinner, fanName);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
     public void Adapter(int spinnerId, List<String> name) {
@@ -131,5 +167,15 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            txt_nama.setText("Nama");
+        } else {
+            super.onBackPressed();
+        }
     }
 }
