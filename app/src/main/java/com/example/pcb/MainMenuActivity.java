@@ -33,6 +33,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private TextView txt_email;
     private ImageButton pcb_builder;
     private ImageButton pcb_recommendation;
+    private ImageButton butProce;
     private de.hdodenhof.circleimageview.CircleImageView image_user;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
@@ -70,6 +71,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         pcb_builder.setOnClickListener(this);
         pcb_recommendation = findViewById(R.id.pcrecommendation);
         pcb_recommendation.setOnClickListener(this);
+        butProce = findViewById(R.id.ButProcie);
+        butProce.setOnClickListener(this);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
         int imageUser = R.drawable.zufar;
@@ -141,6 +144,10 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         }
         if(v.getId()== R.id.pcrecommendation){
             Intent moveIntent = new Intent(MainMenuActivity.this, PCRecommendationActivity.class);
+            startActivity(moveIntent);
+        }
+        if(v.getId()==R.id.ButProcie){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
             startActivity(moveIntent);
         }
     }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PCB"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ComponentActivity"
+            android:exported="false" />
+        <activity
             android:name=".PCRecommendationActivity"
             android:exported="false" />
         <activity

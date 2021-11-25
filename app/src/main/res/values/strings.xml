@@ -56,4 +56,9 @@
         <item>Item2</item>
         <item>Item3</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cores">Cores</string>
+    <string name="ghz">GHz</string>
+    <string name="rp_000">Rp. 000</string>
 </resources>
