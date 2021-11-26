@@ -31,6 +31,11 @@ public class CPUCardViewAdapter extends RecyclerView.Adapter<CPUCardViewAdapter.
     }
     public int[] cpuPhoto ={R.drawable.cpu_ryzen53600, R.drawable.cpu_ryzen73700x, R.drawable.cpu_ryzen93900x, R.drawable.cpu_corei710700k, R.drawable.cpu_ryzen93900xt
     , R.drawable.cpu_corei910850k, R.drawable.cpu_corei910900k, R.drawable.cpu_ryzen52600x, R.drawable.cpu_ryzen73800xt, R.drawable.cpu_corei911900k};
+    public String[] cpuLink = {"https://www.tokopedia.com/search?st=product&q=Ryzen%205%203600", "https://www.tokopedia.com/search?st=product&q=Ryzen%207%203700x",
+    "https://www.tokopedia.com/search?st=product&q=Ryzen%209%203900x", "https://www.tokopedia.com/search?st=product&q=Intel%20i7%2010700k",
+    "https://www.tokopedia.com/search?st=product&q=Ryzen%209%203900XT", "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2010850k",
+    "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2010900k", "https://www.tokopedia.com/search?st=product&q=Ryzen%205%202600x",
+    "https://www.tokopedia.com/search?st=product&q=Ryzen%207%203800xt", "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2011900k"};
 
     @NonNull
     @Override
@@ -56,7 +61,7 @@ public class CPUCardViewAdapter extends RecyclerView.Adapter<CPUCardViewAdapter.
         holder.linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.tokopedia.com/search?st=product&q=AMD%20Ryzen%209%203900x");
+                Uri uri = Uri.parse(cpuLink[holder.getAdapterPosition()]);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 v.getContext().startActivity(intent);
             }

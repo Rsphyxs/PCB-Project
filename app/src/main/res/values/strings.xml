@@ -61,4 +61,7 @@
     <string name="cores">Cores</string>
     <string name="ghz">GHz</string>
     <string name="rp_000">Rp. 000</string>
+    <string name="gpu_chip">GPU chip</string>
+    <string name="memory">Memory</string>
+    <string name="mhz">MHz</string>
 </resources>
