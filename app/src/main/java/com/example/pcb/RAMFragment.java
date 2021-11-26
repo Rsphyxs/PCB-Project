@@ -3,18 +3,19 @@ package com.example.pcb;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RAMFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class RAMFragment extends Fragment {
 
+    private RecyclerView rvRAM;
     public RAMFragment() {
         // Required empty public constructor
     }
@@ -38,6 +39,21 @@ public class RAMFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_r_a_m, container, false);
+        View view = inflater.inflate(R.layout.fragment_r_a_m, container, false);
+        ArrayList<RAM> RAMlist = new ArrayList<>();
+        for(int i=1; i<MainMenuActivity.RAMlist.size(); i++){
+            RAMlist.add(MainMenuActivity.RAMlist.get(i));
+        }
+        rvRAM = view.findViewById(R.id.rvRAM);
+        showRecyclerCardView(view, RAMlist);
+        Log.d("RAMFragment ", RAMlist.get(0).getName());
+
+        return view;
+    }
+
+    private void showRecyclerCardView(View view, ArrayList<RAM> RAMlist){
+        rvRAM.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        RAMCardViewAdapter ramCardViewAdapter = new RAMCardViewAdapter(RAMlist);
+        rvRAM.setAdapter(ramCardViewAdapter);
     }
 }

@@ -67,4 +67,9 @@
     <string name="chipset">Chipset</string>
     <string name="form_factor">Form Factor</string>
     <string name="mobo_name">Mobo Name</string>
+    <string name="speed">Speed</string>
+    <string name="modules">Modules</string>
+    <string name="size">Size</string>
+    <string name="tipe">Tipe</string>
+    <string name="watt">Watt</string>
 </resources>

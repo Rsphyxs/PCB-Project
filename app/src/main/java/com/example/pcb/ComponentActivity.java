@@ -14,10 +14,14 @@ public class ComponentActivity extends AppCompatActivity {
     private ViewPageAdapter adapter;
     private TabLayout tabLayout;
 
+    public static final int EXTRA_POSITION = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_component);
+
+//        int position = getIntent().getIntExtra(EXTRA_POSITION);
 
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);

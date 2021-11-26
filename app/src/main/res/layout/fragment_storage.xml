@@ -7,10 +7,10 @@
     android:background="#616161">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRAM"
+        android:id="@+id/rv_storage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        tools:listitem="@layout/item_cardview_ramcomponent" />
+        tools:listitem="@layout/item_cardview_storagecomponent" />
 
 </RelativeLayout>
