@@ -3,10 +3,15 @@ package com.example.pcb;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,14 +20,8 @@ import android.view.ViewGroup;
  */
 public class MoboFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rvMobo;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public MoboFragment() {
         // Required empty public constructor
@@ -32,7 +31,6 @@ public class MoboFragment extends Fragment {
     public static MoboFragment newInstance() {
         MoboFragment fragment = new MoboFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,8 +39,7 @@ public class MoboFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -50,6 +47,21 @@ public class MoboFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mobo, container, false);
+        View view = inflater.inflate(R.layout.fragment_mobo, container, false);
+        ArrayList<Motherboard> Mobolist = new ArrayList<>();
+        for(int i=1; i<MainMenuActivity.Mobolist.size(); i++){
+            Mobolist.add(MainMenuActivity.Mobolist.get(i));
+        }
+        rvMobo = view.findViewById(R.id.rv_mobo);
+        showRecyclerCardView(view, Mobolist);
+        Log.d("MoboFragment ", Mobolist.get(0).getName());
+
+        return view;
+    }
+
+    private void showRecyclerCardView(View view, ArrayList<Motherboard> Mobolist){
+        rvMobo.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        MoboCardViewAdapter moboCardViewAdapter = new MoboCardViewAdapter(Mobolist);
+        rvMobo.setAdapter(moboCardViewAdapter);
     }
 }

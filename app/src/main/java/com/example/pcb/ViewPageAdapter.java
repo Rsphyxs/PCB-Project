@@ -21,6 +21,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return GPUFragment.newInstance();
             case 2:
                 return MoboFragment.newInstance();
+            case 3:
+                return RAMFragment.newInstance();
             default:
                 return MoboFragment.newInstance();
         }
@@ -28,7 +30,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Nullable
@@ -41,6 +43,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return "GPU";
             case 2:
                 return "Mobo";
+            case 3:
+                return "RAM";
             default:
                 return "Default";
         }
