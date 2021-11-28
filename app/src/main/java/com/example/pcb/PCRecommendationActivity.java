@@ -48,9 +48,16 @@ public class PCRecommendationActivity extends AppCompatActivity {
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
-        txt_nama.setText(namaList.get(0).getUsername());
-        txt_email.setText(namaList.get(0).getEmail());
-        image_user.setImageResource(R.drawable.zufar);
+        if(MainMenuActivity.login == false){
+            txt_nama.setText("Guest");
+            txt_email.setText("Guest");
+            image_user.setImageResource(R.drawable.logopcb);
+        }
+        else {
+            txt_nama.setText(namaList.get(0).getUsername());
+            txt_email.setText(namaList.get(0).getEmail());
+            image_user.setImageResource(R.drawable.zufar);
+        }
 
         CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
         Call<ArrayList<Rekomendasi>> call = crudInterface.fetchRekomendasi();

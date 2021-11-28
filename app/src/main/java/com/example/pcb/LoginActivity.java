@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(moveIntent);
         }
         if (v.getId() == R.id.skipfornow){
-            Intent moveIntent = new Intent(LoginActivity.this, SignupActivity.class);
+            Intent moveIntent = new Intent(LoginActivity.this, MainMenuActivity.class);
             startActivity(moveIntent);
         }
     }

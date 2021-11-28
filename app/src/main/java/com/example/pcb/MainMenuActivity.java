@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,17 +29,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private TextView txt_nama;
     private TextView txt_email;
     private ImageButton pcb_builder;
     private ImageButton pcb_recommendation;
-    private ImageButton butProce;
+    private ImageButton butCPU;
+    private ImageButton butGPU;
+    private ImageButton butMobo;
+    private ImageButton butRAM;
+    private ImageButton butStorage;
+    private ImageButton butPSU;
+    private ImageButton butCase;
     private de.hdodenhof.circleimageview.CircleImageView image_user;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
     public static List<User> list = new ArrayList<User>();
+    public static boolean login;
 
     public static List<CPU> CPUlist = new ArrayList<>();
     public static List<Motherboard> Mobolist = new ArrayList<>();
@@ -71,41 +80,67 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         pcb_builder.setOnClickListener(this);
         pcb_recommendation = findViewById(R.id.pcrecommendation);
         pcb_recommendation.setOnClickListener(this);
-        butProce = findViewById(R.id.ButProcie);
-        butProce.setOnClickListener(this);
+        butCPU = findViewById(R.id.ButProcie);
+        butCPU.setOnClickListener(this);
+        butGPU = findViewById(R.id.ButGpu);
+        butGPU.setOnClickListener(this);
+        butMobo = findViewById(R.id.ButMobo);
+        butMobo.setOnClickListener(this);
+        butRAM = findViewById(R.id.ButRam);
+        butRAM.setOnClickListener(this);
+        butStorage = findViewById(R.id.ButStorage);
+        butStorage.setOnClickListener(this);
+        butPSU = findViewById(R.id.ButPsu);
+        butPSU.setOnClickListener(this);
+        butCase = findViewById(R.id.ButCase);
+        butCase.setOnClickListener(this);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
+
+        CPUlist.clear();
+        cpuName.clear();
 
         int imageUser = R.drawable.zufar;
 
-        CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
-        Call<List<User>> call = crudInterface.fetchUsername(dataEmail);
-        call.enqueue(
-                new Callback<List<User>>() {
-                         @Override
-                         public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                             list = response.body();
-                             txt_nama.setText(list.get(0).getUsername());
-                             txt_email.setText(list.get(0).getEmail());
-                             image_user.setImageResource(imageUser);
-                         }
+        if(dataEmail == null){
+            txt_nama.setText("Guest");
+            txt_email.setText("Guest");
+            image_user.setImageResource(R.drawable.logopcb);
+            login = false;
+        }
+        else {
+            login = true;
+            CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
+            Call<List<User>> call = crudInterface.fetchUsername(dataEmail);
+            call.enqueue(
+                    new Callback<List<User>>() {
+                        @Override
+                        public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                            list = response.body();
+                            txt_nama.setText(list.get(0).getUsername());
+                            txt_email.setText(list.get(0).getEmail());
+                            image_user.setImageResource(imageUser);
+                        }
 
-                         @Override
-                         public void onFailure(Call<List<User>> call, Throwable t) {
-                             Log.d("ERRORzufar: ", t.getMessage());
-                             Toast.makeText(MainMenuActivity.this, "Failed fetch data", Toast.LENGTH_SHORT).show();
-                         }
-                     }
-        );
+                        @Override
+                        public void onFailure(Call<List<User>> call, Throwable t) {
+                            Log.d("ERRORzufar: ", t.getMessage());
+                            Toast.makeText(MainMenuActivity.this, "Failed fetch data", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
+        }
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
+            drawer = findViewById(R.id.drawer_layout);
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                    R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
         FetchCPU();
         FetchMobo();
@@ -115,14 +150,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         FetchPSU();
         FetchCase();
         FetchFan();
-
     }
 
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-            txt_nama.setText("Nama");
         } else {
             super.onBackPressed();
         }
@@ -142,12 +175,43 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             Intent moveIntent = new Intent(MainMenuActivity.this, PCBuildActivity.class);
             startActivity(moveIntent);
         }
-        if(v.getId()== R.id.pcrecommendation){
+        else if(v.getId()== R.id.pcrecommendation){
             Intent moveIntent = new Intent(MainMenuActivity.this, PCRecommendationActivity.class);
             startActivity(moveIntent);
         }
-        if(v.getId()==R.id.ButProcie){
+        else if(v.getId()==R.id.ButProcie){
             Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 0);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButGpu){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 1);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButMobo){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 2);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButRam){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 3);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButStorage){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 4);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButPsu){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 5);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButCase){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 6);
             startActivity(moveIntent);
         }
     }
@@ -367,5 +431,16 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
         );
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_logout:
+                Intent moveIntent = new Intent(MainMenuActivity.this, LoginActivity.class);
+                startActivity(moveIntent);
+                break;
+        }
+        return true;
     }
 }

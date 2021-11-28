@@ -27,6 +27,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return StorageFragment.newInstance();
             case 5:
                 return PSUFragment.newInstance();
+            case 6:
+                return CaseFragment.newInstance();
             default:
                 return MoboFragment.newInstance();
         }
@@ -34,7 +36,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        return 7;
     }
 
     @Nullable
@@ -53,6 +55,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return "Storage";
             case 5:
                 return "PSU";
+            case 6:
+                return "Case";
             default:
                 return "Default";
         }

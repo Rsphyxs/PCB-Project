@@ -18,11 +18,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CPUFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CPUFragment extends Fragment {
 
     private RecyclerView rvCPU;
@@ -31,7 +26,6 @@ public class CPUFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static CPUFragment newInstance() {
         CPUFragment fragment = new CPUFragment();
         Bundle args = new Bundle();
@@ -43,19 +37,9 @@ public class CPUFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
     }
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        rvCPU = view.findViewById(R.id.rv_cpu);
-//        rvCPU.setLayoutManager(new LinearLayoutManager(this));
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

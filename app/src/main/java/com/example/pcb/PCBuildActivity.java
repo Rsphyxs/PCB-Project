@@ -32,7 +32,7 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
     private TextView txt_email;
     private NavigationView navigationView;
     private de.hdodenhof.circleimageview.CircleImageView image_user;
-    public static List<User> namaList = MainMenuActivity.list;
+    private List<User> namaList = MainMenuActivity.list;
 
     List<CPU> CPUlist = MainMenuActivity.CPUlist;
     List<Motherboard> Mobolist = MainMenuActivity.Mobolist;
@@ -76,9 +76,16 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
-        txt_nama.setText(namaList.get(0).getUsername());
-        txt_email.setText(namaList.get(0).getEmail());
-        image_user.setImageResource(R.drawable.zufar);
+        if(MainMenuActivity.login == false){
+            txt_nama.setText("Guest");
+            txt_email.setText("Guest");
+            image_user.setImageResource(R.drawable.logopcb);
+        }
+        else {
+            txt_nama.setText(namaList.get(0).getUsername());
+            txt_email.setText(namaList.get(0).getEmail());
+            image_user.setImageResource(R.drawable.zufar);
+        }
 
         Adapter(R.id.CPUspinner, cpuName);
         Adapter(R.id.Mobospinner, moboName);

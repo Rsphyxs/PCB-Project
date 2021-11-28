@@ -14,14 +14,14 @@ public class ComponentActivity extends AppCompatActivity {
     private ViewPageAdapter adapter;
     private TabLayout tabLayout;
 
-    public static final int EXTRA_POSITION = 0;
+    public static final String EXTRA_POSITION = "extra_position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_component);
 
-//        int position = getIntent().getIntExtra(EXTRA_POSITION);
+        int position = getIntent().getIntExtra(EXTRA_POSITION, 0);
 
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
@@ -29,7 +29,7 @@ public class ComponentActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         adapter = new ViewPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(0);
+        viewPager.setCurrentItem(position);
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
