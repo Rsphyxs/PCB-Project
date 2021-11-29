@@ -42,6 +42,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     private ImageButton butStorage;
     private ImageButton butPSU;
     private ImageButton butCase;
+    private ImageButton butFan;
     private de.hdodenhof.circleimageview.CircleImageView image_user;
     private NavigationView navigationView;
     public static final String EXTRA_EMAIL = "email_user";
@@ -94,10 +95,26 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         butPSU.setOnClickListener(this);
         butCase = findViewById(R.id.ButCase);
         butCase.setOnClickListener(this);
+        butFan = findViewById(R.id.ButFan);
+        butFan.setOnClickListener(this);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
         CPUlist.clear();
         cpuName.clear();
+        GPUlist.clear();
+        gpuName.clear();
+        Mobolist.clear();
+        moboName.clear();
+        RAMlist.clear();
+        ramName.clear();
+        Storagelist.clear();
+        storageName.clear();
+        PSUlist.clear();
+        psuName.clear();
+        Caselist.clear();
+        caseName.clear();
+        Fanlist.clear();
+        fanName.clear();
 
         int imageUser = R.drawable.zufar;
 
@@ -212,6 +229,11 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         else if(v.getId()==R.id.ButCase){
             Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
             moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 6);
+            startActivity(moveIntent);
+        }
+        else if(v.getId()==R.id.ButFan){
+            Intent moveIntent = new Intent(MainMenuActivity.this, ComponentActivity.class);
+            moveIntent.putExtra(ComponentActivity.EXTRA_POSITION, 7);
             startActivity(moveIntent);
         }
     }

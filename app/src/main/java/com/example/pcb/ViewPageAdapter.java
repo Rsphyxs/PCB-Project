@@ -29,6 +29,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return PSUFragment.newInstance();
             case 6:
                 return CaseFragment.newInstance();
+            case 7:
+                return FanFragment.newInstance();
             default:
                 return MoboFragment.newInstance();
         }
@@ -36,7 +38,7 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 7;
+        return 8;
     }
 
     @Nullable
@@ -57,6 +59,8 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
                 return "PSU";
             case 6:
                 return "Case";
+            case 7:
+                return "Fan";
             default:
                 return "Default";
         }
