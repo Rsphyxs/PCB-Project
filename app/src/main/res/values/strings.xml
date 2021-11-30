@@ -73,4 +73,8 @@
     <string name="tipe">Tipe</string>
     <string name="watt">Watt</string>
     <string name="fan_rpm">Fan RPM</string>
+    <string name="your_account">Your Account</string>
+    <string name="edit_your_account_here">Edit your account here</string>
+    <string name="username">Username</string>
+    <string name="update">Update</string>
 </resources>

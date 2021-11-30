@@ -140,32 +140,47 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        for(int i = 0; i < cpuName.size(); i++){
-            if(text.equals(cpuName.get(i))){
+        for(int i = 0; i < cpuName.size(); i++) {
+            if (text.equals(cpuName.get(i))) {
                 cpuPrice = CPUlist.get(i).getPrice();
             }
-            else if(text.equals(moboName.get(i))){
+        }
+        for(int i = 0; i < moboName.size(); i++) {
+            if (text.equals(moboName.get(i))) {
                 moboPrice = Mobolist.get(i).getPrice();
             }
-            else if(text.equals(gpuName.get(i))){
+        }
+        for(int i = 0; i < gpuName.size(); i++) {
+            if (text.equals(gpuName.get(i))) {
                 gpuPrice = GPUlist.get(i).getPrice();
             }
-            else if(text.equals(ramName.get(i))){
+        }
+        for(int i = 0; i < ramName.size(); i++) {
+            if (text.equals(ramName.get(i))) {
                 ramPrice = RAMlist.get(i).getPrice();
             }
-            else if(text.equals(storageName.get(i))){
+        }
+        for(int i = 0; i < storageName.size(); i++) {
+            if (text.equals(storageName.get(i))) {
                 storagePrice = Storagelist.get(i).getPrice();
             }
-            else if(text.equals(psuName.get(i))){
+        }
+        for(int i = 0; i < psuName.size(); i++) {
+            if (text.equals(psuName.get(i))) {
                 psuPrice = PSUlist.get(i).getPrice();
             }
-            else if(text.equals(caseName.get(i))){
+        }
+        for(int i = 0; i < caseName.size(); i++) {
+            if (text.equals(caseName.get(i))) {
                 casePrice = Caselist.get(i).getPrice();
             }
-            else if(text.equals(fanName.get(i))){
+        }
+        for (int i = 0; i < fanName.size(); i++) {
+            if (text.equals(fanName.get(i))) {
                 fanPrice = Fanlist.get(i).getPrice();
             }
         }
+
         finalPrice = moboPrice + cpuPrice + gpuPrice + ramPrice + storagePrice + psuPrice + casePrice + fanPrice;
         textPrice = findViewById(R.id.finalPrice);
         textPrice.setText("Rp. " + finalPrice);

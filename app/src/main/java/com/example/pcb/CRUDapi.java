@@ -30,6 +30,10 @@ public interface CRUDapi {
     @POST("username/")
     Call<List<User>> fetchUsername(@Field("email") String email);
 
+    @FormUrlEncoded
+    @POST("update/")
+    Call<User> updateUser(@Field("id") int id, @Field("username") String username, @Field("email") String email, @Field("password") String password);
+
     @POST("cpu/")
     Call<List<CPU>> fetchCPU();
 

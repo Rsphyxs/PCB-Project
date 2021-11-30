@@ -29,7 +29,7 @@ const client = new Client({
   
   app.get("/show", async (req, res) => {
     try {
-        const allTodos = await client.query("SELECT * FROM pcbTable2");
+        const allTodos = await client.query("SELECT * FROM pcbTable");
         res.json(allTodos.rows);
     } catch (err) {
         console.error(err.message);
@@ -42,7 +42,7 @@ const client = new Client({
       const email  = req.body.email;
       const password  = req.body.password;
 
-      const todo = await client.query(`INSERT INTO pcbTable2 (username, email, password) VALUES ('${username}', '${email}', '${password}')`);
+      const todo = await client.query(`INSERT INTO pcbTable VALUES (default, '${username}', '${email}', '${password}')`);
       
       console.log("Berhasil di insert bro");
       res.json({status:'success'});
@@ -60,7 +60,7 @@ const client = new Client({
     console.log(username);
     console.log(email);
     if (username && email) {
-        client.query('SELECT COUNT(username) FROM pcbTable2 WHERE username = $1 OR email = $2', [username, email], function (error, results, fields) { 
+        client.query('SELECT COUNT(username) FROM pcbTable WHERE username = $1 OR email = $2', [username, email], function (error, results, fields) { 
           if (results.rows[0].count == 0) {
                 console.log("Username dan password tidak terdaftar");
                 response.jsonp({ success: false });
@@ -83,7 +83,7 @@ const client = new Client({
     console.log("email: " + email);
     console.log("password: " + password);
     if (email && password) {
-        client.query('SELECT COUNT(username) FROM pcbTable2 WHERE email = $1 AND password = $2', [email, password], function (error, results, fields) { 
+        client.query('SELECT COUNT(username) FROM pcbTable WHERE email = $1 AND password = $2', [email, password], function (error, results, fields) { 
           if (results.rows[0].count == 0) {
                 console.log("Username dan password tidak terdaftar");
                 response.jsonp({ success: false });
@@ -99,12 +99,26 @@ const client = new Client({
         response.end();
     }
   });
+
+  app.post("/update", async (request, res) => {
+    const id = request.body.id;
+    const username = request.body.username;
+    const email = request.body.email;
+    const password = request.body.password;
+    try {
+        const todo = await client.query(`UPDATE pcbTable SET username = $2, email = $3, password = $4 WHERE id= $1`, [id, username, email, password]);
+        res.json({status:'success'});
+    } catch (err) {
+        console.error(err.message);
+        res.json({status:'failed'});
+    }
+  });
   
   app.post('/username', async(req, res) => {
     try {
       const email  = req.body.email;
 
-      const todo = await client.query(`select * from pcbTable2 where email = '${email}'`);
+      const todo = await client.query(`select * from pcbTable where email = '${email}'`);
       
       console.log("Berhasil di show bro");
       // console.log(todo.rows[0].username);

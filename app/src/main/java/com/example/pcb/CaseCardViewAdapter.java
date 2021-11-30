@@ -24,8 +24,9 @@ public class CaseCardViewAdapter extends RecyclerView.Adapter<CaseCardViewAdapte
     public CaseCardViewAdapter(ArrayList<Case> list) {
         this.listCase = list;
     }
-    public int[] casePhoto ={R.drawable.gpu_asusstrix1080ti, R.drawable.gpu_nvidia3080, R.drawable.gpu_evga1070, R.drawable.gpu_zotac1050ti, R.drawable.gpu_gigabyte1660super
-            , R.drawable.gpu_asus1060dual, R.drawable.gpu_msirx570, R.drawable.gpu_asusrx580, R.drawable.gpu_msigt1030, R.drawable.asus_rtx2060};
+    public int[] casePhoto ={R.drawable.casing_corsair4000d, R.drawable.casing_lianlilancool205, R.drawable.casing_corsair4000x, R.drawable.casing_corsair465x,
+            R.drawable.casing_nzxth510, R.drawable.casing_metallicgearneo, R.drawable.casing_cubegamingkellva, R.drawable.casing_corsaircarbide275r,
+            R.drawable.casing_msimpgsekira100r, R.drawable.casing_primex};
     public String[] caseLink = {"https://www.tokopedia.com/search?st=product&q=Asus%20Strix%201080%20Ti", "https://www.tokopedia.com/search?st=product&q=Nvidia%20RTX3080%20Founder%20Edition",
             "https://www.tokopedia.com/search?st=product&q=EVGA%20SC%20Gaming%20GTX%201070", "https://www.tokopedia.com/search?st=product&q=Zotac%201050Ti",
             "https://www.tokopedia.com/search?st=product&q=Gigabyte%20OC%201660%20super", "https://www.tokopedia.com/search?st=product&q=Asus%20dual%201060",

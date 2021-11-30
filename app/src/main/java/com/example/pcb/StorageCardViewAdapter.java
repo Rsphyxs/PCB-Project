@@ -23,13 +23,17 @@ public class StorageCardViewAdapter extends RecyclerView.Adapter<StorageCardView
     public StorageCardViewAdapter(ArrayList<Storage> list) {
         this.listStorage = list;
     }
-    public int[] storagePhoto ={R.drawable.cpu_ryzen53600, R.drawable.cpu_ryzen73700x, R.drawable.cpu_ryzen93900x, R.drawable.cpu_corei710700k, R.drawable.cpu_ryzen93900xt
-            , R.drawable.cpu_corei910850k, R.drawable.cpu_corei910900k, R.drawable.cpu_ryzen52600x, R.drawable.cpu_ryzen73800xt, R.drawable.cpu_corei911900k};
-    public String[] storageLink = {"https://www.tokopedia.com/search?st=product&q=Ryzen%205%203600", "https://www.tokopedia.com/search?st=product&q=Ryzen%207%203700x",
-            "https://www.tokopedia.com/search?st=product&q=Ryzen%209%203900x", "https://www.tokopedia.com/search?st=product&q=Intel%20i7%2010700k",
-            "https://www.tokopedia.com/search?st=product&q=Ryzen%209%203900XT", "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2010850k",
-            "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2010900k", "https://www.tokopedia.com/search?st=product&q=Ryzen%205%202600x",
-            "https://www.tokopedia.com/search?st=product&q=Ryzen%207%203800xt", "https://www.tokopedia.com/search?st=product&q=Intel%20i9%2011900k"};
+    public int[] storagePhoto ={R.drawable.storage_samsung_970_evo, R.drawable.storage_samsung_860_evo, R.drawable.storage_samsung_980_evo, R.drawable.storage_crucial_mx300
+    , R.drawable.storage_seagate_barracuda, R.drawable.storage_corsair_force_series_gt240, R.drawable.storage_crucial_mx500, R.drawable.storage_toshiba_p300, R.drawable.storage_seagate_firecuda_520};
+    public String[] storageLink = {"https://www.tokopedia.com/search?st=product&q=samsung%20970%20evo",
+            "https://www.tokopedia.com/search?st=product&q=samsung%20860%20evo",
+            "https://www.tokopedia.com/search?st=product&q=samsung%20evo%20980&navsource=home",
+            "https://www.tokopedia.com/search?q=crucial%20mx300&source=universe&srp_component_id=02.07.01.01&st=product",
+            "https://www.tokopedia.com/search?st=product&q=seagate%20barracuda",
+            "https://www.tokopedia.com/search?st=product&q=corsair%20force%20series%20gt240",
+            "https://www.tokopedia.com/search?q=crucial%20mx500&source=universe&srp_component_id=02.02.01.01&st=product",
+            "https://www.tokopedia.com/search?st=product&q=Toshiba%20p300&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=seagate%20firecuda%20520"};
 
     @NonNull
     @Override
@@ -40,7 +44,6 @@ public class StorageCardViewAdapter extends RecyclerView.Adapter<StorageCardView
 
     @Override
     public void onBindViewHolder(@NonNull StorageCardViewAdapter.StorageCardViewViewHolder holder, int position) {
-//        List<CPU> listCPU = MainMenuActivity.CPUlist;
 
         Storage storage = listStorage.get(position);
         Glide.with(holder.itemView.getContext())

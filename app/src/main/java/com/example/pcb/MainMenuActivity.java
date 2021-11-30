@@ -48,6 +48,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     public static final String EXTRA_EMAIL = "email_user";
     public static List<User> list = new ArrayList<User>();
     public static boolean login;
+    public static int imageUser;
 
     public static List<CPU> CPUlist = new ArrayList<>();
     public static List<Motherboard> Mobolist = new ArrayList<>();
@@ -72,6 +73,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_main_menu);
 
         String dataEmail = getIntent().getStringExtra(EXTRA_EMAIL);
+
+        Log.d("Main Menu: ", "" + dataEmail);
 
         navigationView = (NavigationView)findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
@@ -116,7 +119,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         Fanlist.clear();
         fanName.clear();
 
-        int imageUser = R.drawable.zufar;
+        imageUser = R.drawable.zufar;
 
         if(dataEmail == null){
             txt_nama.setText("Guest");
@@ -136,6 +139,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                             txt_nama.setText(list.get(0).getUsername());
                             txt_email.setText(list.get(0).getEmail());
                             image_user.setImageResource(imageUser);
+                            Log.d("MainMenu: ", "Password: " + list.get(0).getPassword());
                         }
 
                         @Override
@@ -462,6 +466,14 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                 Intent moveIntent = new Intent(MainMenuActivity.this, LoginActivity.class);
                 startActivity(moveIntent);
                 break;
+            case R.id.nav_profile:
+                if(login == true){
+                    moveIntent = new Intent(MainMenuActivity.this, AccountActivity.class);
+                    startActivity(moveIntent);
+                }
+                else{
+                    Toast.makeText(MainMenuActivity.this, "You have to Login", Toast.LENGTH_SHORT).show();
+                }
         }
         return true;
     }

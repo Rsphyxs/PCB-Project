@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editPass;
     private Button btnSkip;
     private Button btnSignin;
+    private ImageButton btnShow;
+    private boolean show = false;
+    public static boolean login = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnPrev.setOnClickListener(this);
         btnSkip = findViewById(R.id.skipfornow);
         btnSkip.setOnClickListener(this);
+        btnShow = findViewById(R.id.showBut);
+        btnShow.setOnClickListener(this);
     }
 
     @Override
@@ -69,13 +75,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             public void onResponse(Call<Verif> call, Response<Verif> response) {
                                 Verif verif = response.body();
                                 if(verif.isSuccess()==true){
+                                    login = true;
                                     Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                                     Intent moveIntent = new Intent(LoginActivity.this, MainMenuActivity.class);
                                     moveIntent.putExtra(MainMenuActivity.EXTRA_EMAIL, dataEmail);
                                     startActivity(moveIntent);
                                 }
                                 else{
-                                    Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Username or Password incorrect", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -88,17 +95,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 );
             }
         }
-        if (v.getId() == R.id.signup){
+        else if (v.getId() == R.id.signup){
             Intent moveIntent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(moveIntent);
         }
-        if (v.getId() == R.id.prevbutton){
+        else if (v.getId() == R.id.prevbutton){
             Intent moveIntent = new Intent(LoginActivity.this, InformationActivity2.class);
             startActivity(moveIntent);
         }
-        if (v.getId() == R.id.skipfornow){
+        else if (v.getId() == R.id.skipfornow){
+            login = false;
             Intent moveIntent = new Intent(LoginActivity.this, MainMenuActivity.class);
             startActivity(moveIntent);
+        }
+        else if (v.getId() == R.id.showBut){
+            if(show == false){
+                editPass.setTransformationMethod(null);
+                show = true;
+            }
+            else{
+                editPass.setTransformationMethod(new PasswordTransformationMethod());
+                show = false;
+            }
         }
     }
 

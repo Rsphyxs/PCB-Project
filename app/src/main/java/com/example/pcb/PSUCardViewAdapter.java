@@ -25,13 +25,13 @@ public class PSUCardViewAdapter extends RecyclerView.Adapter<PSUCardViewAdapter.
         this.listPSU = list;
     }
 
-    public int[] psuPhoto = {R.drawable.gpu_asusstrix1080ti, R.drawable.gpu_nvidia3080, R.drawable.gpu_evga1070, R.drawable.gpu_zotac1050ti, R.drawable.gpu_gigabyte1660super
-            , R.drawable.gpu_asus1060dual, R.drawable.gpu_msirx570, R.drawable.gpu_asusrx580, R.drawable.gpu_msigt1030, R.drawable.asus_rtx2060};
-    public String[] psuLink = {"https://www.tokopedia.com/search?st=product&q=Asus%20Strix%201080%20Ti", "https://www.tokopedia.com/search?st=product&q=Nvidia%20RTX3080%20Founder%20Edition",
-            "https://www.tokopedia.com/search?st=product&q=EVGA%20SC%20Gaming%20GTX%201070", "https://www.tokopedia.com/search?st=product&q=Zotac%201050Ti",
-            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20OC%201660%20super", "https://www.tokopedia.com/search?st=product&q=Asus%20dual%201060",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20Gaming%20X%20RX%20570", "https://www.tokopedia.com/search?st=product&q=Asus%20ROG%20Strix%20RX580",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20GT%201030%20LP%20OC", "https://www.tokopedia.com/search?st=product&q=Asus%20Dual%20Evo%20RTX%202060"};
+    public int[] psuPhoto = {R.drawable.psu_corsairrm, R.drawable.psu_evgabr, R.drawable.psu_corsairhxplatinum, R.drawable.psu_seasonicfocusgoldplus, R.drawable.psu_silverstonesfx
+            , R.drawable.psu_corsairsf, R.drawable.psu_corsaircx, R.drawable.psu_seasonicfocus, R.drawable.psu_seasonicfocussgx, R.drawable.psu_evgap2};
+    public String[] psuLink = {"https://www.tokopedia.com/search?st=product&q=Corsair%20RM&navsource=home", "https://www.tokopedia.com/search?st=product&q=EVGA%20BR&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Corsair%20HX%20platinum&navsource=home", "https://www.tokopedia.com/search?st=product&q=Seasonic%20FOCUS%20Plus%20Gold&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Silverstone%20SFX&navsource=home", "https://www.tokopedia.com/search?st=product&q=Corsair%20sf&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Corsair%20cx&navsource=home", "https://www.tokopedia.com/search?st=product&q=Seasonic%20FOCUS&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Seasonic%20FOCUS%20sgx&navsource=home", "https://www.tokopedia.com/search?st=product&q=EVGA%20p2&navsource=home"};
 
     @NonNull
     @Override
