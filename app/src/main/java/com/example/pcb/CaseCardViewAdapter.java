@@ -27,11 +27,11 @@ public class CaseCardViewAdapter extends RecyclerView.Adapter<CaseCardViewAdapte
     public int[] casePhoto ={R.drawable.casing_corsair4000d, R.drawable.casing_lianlilancool205, R.drawable.casing_corsair4000x, R.drawable.casing_corsair465x,
             R.drawable.casing_nzxth510, R.drawable.casing_metallicgearneo, R.drawable.casing_cubegamingkellva, R.drawable.casing_corsaircarbide275r,
             R.drawable.casing_msimpgsekira100r, R.drawable.casing_primex};
-    public String[] caseLink = {"https://www.tokopedia.com/search?st=product&q=Asus%20Strix%201080%20Ti", "https://www.tokopedia.com/search?st=product&q=Nvidia%20RTX3080%20Founder%20Edition",
-            "https://www.tokopedia.com/search?st=product&q=EVGA%20SC%20Gaming%20GTX%201070", "https://www.tokopedia.com/search?st=product&q=Zotac%201050Ti",
-            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20OC%201660%20super", "https://www.tokopedia.com/search?st=product&q=Asus%20dual%201060",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20Gaming%20X%20RX%20570", "https://www.tokopedia.com/search?st=product&q=Asus%20ROG%20Strix%20RX580",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20GT%201030%20LP%20OC", "https://www.tokopedia.com/search?st=product&q=Asus%20Dual%20Evo%20RTX%202060"};
+    public String[] caseLink = {"https://www.tokopedia.com/search?st=product&q=corsair%204000d&navsource=home", "https://www.tokopedia.com/search?st=product&q=lian%20li%20lancool%20205&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=corsair%204000x&navsource=home", "https://www.tokopedia.com/search?st=product&q=corsair%20465x&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=nzxt%20h510&navsource=home", "https://www.tokopedia.com/search?st=product&q=metallic%20gear%20neo&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=cube%20gaming%20kellva&navsource=home", "https://www.tokopedia.com/search?st=product&q=corsair%20carbide%20275r&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=msi%20mpg%20sekira%20100r&navsource=home", "https://www.tokopedia.com/search?st=product&q=prime%20x%20case&navsource=home"};
 
     @NonNull
     @Override

@@ -24,13 +24,13 @@ public class RAMCardViewAdapter extends RecyclerView.Adapter<RAMCardViewAdapter.
     public RAMCardViewAdapter(ArrayList<RAM> list) {
         this.listRAM = list;
     }
-    public int[] ramPhoto ={R.drawable.gpu_asusstrix1080ti, R.drawable.gpu_nvidia3080, R.drawable.gpu_evga1070, R.drawable.gpu_zotac1050ti, R.drawable.gpu_gigabyte1660super
-            , R.drawable.gpu_asus1060dual, R.drawable.gpu_msirx570, R.drawable.gpu_asusrx580, R.drawable.gpu_msigt1030, R.drawable.asus_rtx2060};
-    public String[] gpuLink = {"https://www.tokopedia.com/search?st=product&q=Asus%20Strix%201080%20Ti", "https://www.tokopedia.com/search?st=product&q=Nvidia%20RTX3080%20Founder%20Edition",
-            "https://www.tokopedia.com/search?st=product&q=EVGA%20SC%20Gaming%20GTX%201070", "https://www.tokopedia.com/search?st=product&q=Zotac%201050Ti",
-            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20OC%201660%20super", "https://www.tokopedia.com/search?st=product&q=Asus%20dual%201060",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20Gaming%20X%20RX%20570", "https://www.tokopedia.com/search?st=product&q=Asus%20ROG%20Strix%20RX580",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20GT%201030%20LP%20OC", "https://www.tokopedia.com/search?st=product&q=Asus%20Dual%20Evo%20RTX%202060"};
+    public int[] ramPhoto ={R.drawable.ram_corsairvengeancelpx, R.drawable.ram_corsairvengeancergbpro, R.drawable.ram_gskilltridentz, R.drawable.ram_crucialballistix, R.drawable.ram_kingstonhyperxfury
+            , R.drawable.ram_teameliteplus, R.drawable.ram_gskilltridentzneo, R.drawable.ram_vgentsunami, R.drawable.ram_teamgrouptcreateclassic, R.drawable.ram_gskillripjaws};
+    public String[] ramLink =  {"https://www.tokopedia.com/search?st=product&q=corsair%20vengeance%20lpx&navsource=home", "https://www.tokopedia.com/search?st=product&q=corsair%20vengeance%20rgb%20pro&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=G.Skill%20Trident%20Z&navsource=home", "https://www.tokopedia.com/search?st=product&q=Crucial%20Ballistix%20RGB&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Kingston%20HyperX%20Fury&navsource=home", "https://www.tokopedia.com/search?st=product&q=team%20elite%20plus&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=g.skill%20tridentz%20neo&navsource=home", "https://www.tokopedia.com/search?st=product&q=v-gen%20tsunami&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=teamgroup%20t-create&navsource=home", "https://www.tokopedia.com/search?st=product&q=gskill%20ripjaws&navsource=home"};
 
     @NonNull
     @Override
@@ -56,7 +56,7 @@ public class RAMCardViewAdapter extends RecyclerView.Adapter<RAMCardViewAdapter.
         holder.linkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse(gpuLink[holder.getAdapterPosition()]);
+                Uri uri = Uri.parse(ramLink[holder.getAdapterPosition()]);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 v.getContext().startActivity(intent);
             }
