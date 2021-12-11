@@ -77,4 +77,5 @@
     <string name="edit_your_account_here">Edit your account here</string>
     <string name="username">Username</string>
     <string name="update">Update</string>
+    <string name="price">Price</string>
 </resources>

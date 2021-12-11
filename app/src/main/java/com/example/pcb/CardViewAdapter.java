@@ -48,6 +48,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
         List<String> caseName = MainMenuActivity.caseName;
         List<String> fanName = MainMenuActivity.fanName;
         Rekomendasi rekomendasi = listRekomendasi.get(position);
+        long price = MainMenuActivity.CPUlist.get(rekomendasi.getId_cpu()).getPrice() + MainMenuActivity.Mobolist.get(rekomendasi.getId_mobo()).getPrice()
+                + MainMenuActivity.GPUlist.get(rekomendasi.getId_gpu()).getPrice() + MainMenuActivity.Mobolist.get(rekomendasi.getId_mobo()).getPrice()
+                + MainMenuActivity.RAMlist.get(rekomendasi.getId_ram()).getPrice() + MainMenuActivity.PSUlist.get(rekomendasi.getId_psu()).getPrice()
+                + MainMenuActivity.Caselist.get(rekomendasi.getId_case()).getPrice() + MainMenuActivity.Fanlist.get(rekomendasi.getId_fan()).getPrice();
         Glide.with(holder.itemView.getContext())
                 .load(rekomendasi.getPhoto())
                 .apply(new RequestOptions().override(350, 550))
@@ -61,6 +65,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
         holder.psuName.setText(psuName.get(rekomendasi.getId_psu()));
         holder.caseName.setText(caseName.get(rekomendasi.getId_case()));
         holder.fanName.setText(fanName.get(rekomendasi.getId_fan()));
+        holder.finalPrice.setText("Rp. " + price);
 
         holder.expandButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +94,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
         CardView recommendationCardView;
         LinearLayout expandableSpecification;
         ImageView imgPhoto;
-        TextView recommendationName, cpuName, gpuName, moboName, ramName, storageName, psuName, caseName, fanName;
+        TextView recommendationName, cpuName, gpuName, moboName, ramName, storageName, psuName, caseName, fanName, finalPrice;
         ImageButton expandButton;
         CardViewViewHolder(View itemView) {
             super(itemView);
@@ -105,6 +110,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
             psuName = itemView.findViewById(R.id.psu_name);
             caseName = itemView.findViewById(R.id.case_name);
             fanName = itemView.findViewById(R.id.fan_name);
+            finalPrice = itemView.findViewById(R.id.finalPrice);
             expandButton = itemView.findViewById(R.id.expand_button);
         }
     }
