@@ -1,5 +1,6 @@
 package com.example.pcb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,8 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PCRecommendationActivity extends AppCompatActivity {
+public class PCRecommendationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private RecyclerView rvRecommendation;
     private TextView txt_nama;
@@ -36,6 +39,7 @@ public class PCRecommendationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pcrecommendation);
         setTitle("Choose our recommendation");
@@ -86,6 +90,8 @@ public class PCRecommendationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -108,5 +114,24 @@ public class PCRecommendationActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_logout:
+                Intent moveIntent = new Intent(PCRecommendationActivity.this, LoginActivity.class);
+                startActivity(moveIntent);
+                break;
+            case R.id.nav_profile:
+                if(MainMenuActivity.login == true){
+                    moveIntent = new Intent(PCRecommendationActivity.this, AccountActivity.class);
+                    startActivity(moveIntent);
+                }
+                else{
+                    Toast.makeText(PCRecommendationActivity.this, "You have to Login", Toast.LENGTH_SHORT).show();
+                }
+        }
+        return true;
     }
 }

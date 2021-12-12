@@ -58,7 +58,6 @@ public class StorageFragment extends Fragment {
         }
         rvStorage = view.findViewById(R.id.rv_storage);
         showRecyclerCardView(view, Storagelist);
-        Log.d("CPUFragment ", Storagelist.get(0).getName());
 
         return view;
     }

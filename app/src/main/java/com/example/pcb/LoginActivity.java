@@ -22,7 +22,6 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnSignup;
-    private ImageButton btnPrev;
     private EditText editEmail;
     private EditText editPass;
     private Button btnSkip;
@@ -33,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -43,8 +43,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSignin.setOnClickListener(this);
         btnSignup = findViewById(R.id.signup);
         btnSignup.setOnClickListener(this);
-        btnPrev = findViewById(R.id.prevbutton);
-        btnPrev.setOnClickListener(this);
         btnSkip = findViewById(R.id.skipfornow);
         btnSkip.setOnClickListener(this);
         btnShow = findViewById(R.id.showBut);
@@ -97,10 +95,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else if (v.getId() == R.id.signup){
             Intent moveIntent = new Intent(LoginActivity.this, SignupActivity.class);
-            startActivity(moveIntent);
-        }
-        else if (v.getId() == R.id.prevbutton){
-            Intent moveIntent = new Intent(LoginActivity.this, InformationActivity2.class);
             startActivity(moveIntent);
         }
         else if (v.getId() == R.id.skipfornow){

@@ -25,6 +25,10 @@ import java.util.List;
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardViewViewHolder>{
     private ArrayList<Rekomendasi> listRekomendasi;
 
+    public String[] Desc = {"This PC is capable of running multiple light application such as office, multimedia, and design application and also capable of running games in low to mid setting",
+        "This PC is capable of running office application and also process design and editing application in high process rate. This PC also capable of running AAA games with mid to high setting",
+        "This PC is capable of running anything that the previous one cannot in the speed that human cant comprehend, and also you dont have to worry about your FPS anymore"};
+
     public CardViewAdapter(ArrayList<Rekomendasi> list) {
         this.listRekomendasi = list;
     }
@@ -57,6 +61,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
                 .apply(new RequestOptions().override(350, 550))
                 .into(holder.imgPhoto);
         holder.recommendationName.setText(rekomendasi.getNama());
+        holder.description.setText(Desc[position]);
         holder.cpuName.setText(cpuName.get(rekomendasi.getId_cpu()));
         holder.gpuName.setText(gpuName.get(rekomendasi.getId_gpu()));
         holder.moboName.setText(moboName.get(rekomendasi.getId_mobo()));
@@ -94,11 +99,12 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.CardVi
         CardView recommendationCardView;
         LinearLayout expandableSpecification;
         ImageView imgPhoto;
-        TextView recommendationName, cpuName, gpuName, moboName, ramName, storageName, psuName, caseName, fanName, finalPrice;
+        TextView recommendationName, description, cpuName, gpuName, moboName, ramName, storageName, psuName, caseName, fanName, finalPrice;
         ImageButton expandButton;
         CardViewViewHolder(View itemView) {
             super(itemView);
             recommendationCardView = itemView.findViewById(R.id.recommendation_cardview);
+            description = itemView.findViewById(R.id.description);
             expandableSpecification = itemView.findViewById(R.id.expand_specification);
             imgPhoto = itemView.findViewById(R.id.img_pc_recommendation);
             recommendationName = itemView.findViewById(R.id.recommendation_name);

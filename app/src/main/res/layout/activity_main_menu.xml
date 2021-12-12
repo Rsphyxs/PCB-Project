@@ -15,13 +15,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/cardview_dark_background"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/shape"
+            android:backgroundTint="#555555"
             android:elevation="20dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+            app:title=" "
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PCB"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:letterSpacing="1"/>
+        </androidx.appcompat.widget.Toolbar>
+
+
 
         <ScrollView
             android:id="@+id/fragment_container"
