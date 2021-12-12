@@ -140,7 +140,18 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
                             list = response.body();
                             txt_nama.setText(list.get(0).getUsername());
                             txt_email.setText(list.get(0).getEmail());
-                            image_user.setImageResource(imageUser);
+                            if(list.get(0).getUsername().equals("zufar")){
+                                image_user.setImageResource(R.drawable.zufar);
+                            }
+                            else if(list.get(0).getUsername().equals("ilhum")){
+                                image_user.setImageResource(R.drawable.ilhum);
+                            }
+                            else if(list.get(0).getUsername().equals("fred")){
+                                image_user.setImageResource(R.drawable.fred);
+                            }
+                            else{
+                                image_user.setImageResource(R.drawable.logopcb);
+                            }
                             Log.d("MainMenu: ", "Password: " + list.get(0).getPassword());
                         }
 

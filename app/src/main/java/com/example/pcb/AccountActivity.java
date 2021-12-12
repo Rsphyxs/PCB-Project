@@ -46,7 +46,18 @@ public class AccountActivity extends AppCompatActivity implements View.OnClickLi
         butPrev = findViewById(R.id.prevbutton);
         butPrev.setOnClickListener(this);
 
-        imageUser.setImageResource(MainMenuActivity.imageUser);
+        if(MainMenuActivity.list.get(0).getUsername().equals("zufar")){
+            imageUser.setImageResource(R.drawable.zufar);
+        }
+        else if(MainMenuActivity.list.get(0).getUsername().equals("ilhum")){
+            imageUser.setImageResource(R.drawable.ilhum);
+        }
+        else if(MainMenuActivity.list.get(0).getUsername().equals("fred")){
+            imageUser.setImageResource(R.drawable.fred);
+        }
+        else{
+            imageUser.setImageResource(R.drawable.logopcb);
+        }
         editUsername.setText(MainMenuActivity.list.get(0).getUsername());
         editEmail.setText(MainMenuActivity.list.get(0).getEmail());
         editPassword.setText(MainMenuActivity.list.get(0).getPassword());
