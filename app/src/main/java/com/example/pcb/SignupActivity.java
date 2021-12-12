@@ -2,13 +2,18 @@ package com.example.pcb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -21,6 +26,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText editEmail;
     private EditText editPass;
     private Button butSignup;
+    private CheckBox checkBoxPolicy;
 
 
     @Override
@@ -32,7 +38,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         editEmail = findViewById(R.id.editEmail);
         editPass = findViewById(R.id.editPass);
         butSignup = findViewById(R.id.signup);
-
+        checkBoxPolicy = findViewById(R.id.policyCheckbox);
+        butSignup.setEnabled(false);
+        checkBoxPolicy.setOnClickListener(this);
         butSignup.setOnClickListener(this);
     }
 
@@ -64,10 +72,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                             @Override
                             public void onResponse(Call<Verif> call, Response<Verif> response) {
                                 Verif verif = response.body();
-                                if(verif.isSuccess()==true){
+                                if (verif.isSuccess() == true) {
                                     Toast.makeText(SignupActivity.this, "Email or Username already registered!", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
+                                } else {
                                     sendData(dataUsername, dataEmail, dataPass);
                                 }
                             }
@@ -81,9 +88,44 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 );
             }
         }
+        else if (checkBoxPolicy.isChecked()) {
+            final Dialog dialog = new Dialog(SignupActivity.this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(true);
+            dialog.setContentView(R.layout.term_dialog);
+
+            final ImageButton cancelButton = dialog.findViewById(R.id.cancelButton);
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    checkBoxPolicy.setChecked(false);
+                    dialog.dismiss();
+                }
+            });
+            final CheckBox agreeCheckbox = dialog.findViewById(R.id.agreeCheckbox);
+            agreeCheckbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    butSignup.setEnabled(true);
+                    checkBoxPolicy.setChecked(true);
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                        }
+                    }, 300);
+                }
+            });
+
+            dialog.show();
+        }
+        else if (!checkBoxPolicy.isChecked()) {
+            butSignup.setEnabled(false);
+        }
     }
 
-    public void sendData(String username, String email, String password){
+    public void sendData(String username, String email, String password) {
         CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
         Call<User> call = crudInterface.createUser(username, email, password);
         call.enqueue(

@@ -74,6 +74,13 @@
         android:hint="@string/password"
         android:inputType="textPassword" />
 
+        <CheckBox
+            android:id="@+id/policyCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/i_read_and_accepted_the_privacy_policy"/>
+
     <RelativeLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
