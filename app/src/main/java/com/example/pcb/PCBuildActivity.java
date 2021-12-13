@@ -78,7 +78,6 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
         txt_nama = (TextView) headerView.findViewById(R.id.header_name);
         txt_email = (TextView) headerView.findViewById(R.id.header_email);
         image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
-        image_user = (de.hdodenhof.circleimageview.CircleImageView) headerView.findViewById(R.id.header_image);
 
         if(MainMenuActivity.login == false){
             txt_nama.setText("Guest");
@@ -88,7 +87,18 @@ public class PCBuildActivity extends AppCompatActivity implements AdapterView.On
         else {
             txt_nama.setText(namaList.get(0).getUsername());
             txt_email.setText(namaList.get(0).getEmail());
-            image_user.setImageResource(R.drawable.zufar);
+            if(MainMenuActivity.list.get(0).getUsername().equals("zufar")){
+                image_user.setImageResource(R.drawable.zufar);
+            }
+            else if(MainMenuActivity.list.get(0).getUsername().equals("ilhum")){
+                image_user.setImageResource(R.drawable.ilhum);
+            }
+            else if(MainMenuActivity.list.get(0).getUsername().equals("fred")){
+                image_user.setImageResource(R.drawable.fred);
+            }
+            else{
+                image_user.setImageResource(R.drawable.logopcb);
+            }
         }
 
         Adapter(R.id.CPUspinner, cpuName);

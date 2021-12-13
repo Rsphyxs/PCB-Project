@@ -60,7 +60,18 @@ public class PCRecommendationActivity extends AppCompatActivity implements Navig
         else {
             txt_nama.setText(namaList.get(0).getUsername());
             txt_email.setText(namaList.get(0).getEmail());
-            image_user.setImageResource(R.drawable.zufar);
+            if(MainMenuActivity.list.get(0).getUsername().equals("zufar")){
+                image_user.setImageResource(R.drawable.zufar);
+            }
+            else if(MainMenuActivity.list.get(0).getUsername().equals("ilhum")){
+                image_user.setImageResource(R.drawable.ilhum);
+            }
+            else if(MainMenuActivity.list.get(0).getUsername().equals("fred")){
+                image_user.setImageResource(R.drawable.fred);
+            }
+            else{
+                image_user.setImageResource(R.drawable.logopcb);
+            }
         }
 
         CRUDapi crudInterface = RetrofitClient.getClient().create(CRUDapi.class);
