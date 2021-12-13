@@ -24,13 +24,13 @@ public class MoboCardViewAdapter extends RecyclerView.Adapter<MoboCardViewAdapte
     public MoboCardViewAdapter(ArrayList<Motherboard> list) {
         this.listMobo = list;
     }
-    public int[] moboPhoto ={R.drawable.gpu_asusstrix1080ti, R.drawable.gpu_nvidia3080, R.drawable.gpu_evga1070, R.drawable.gpu_zotac1050ti, R.drawable.gpu_gigabyte1660super
-            , R.drawable.gpu_asus1060dual, R.drawable.gpu_msirx570, R.drawable.gpu_asusrx580, R.drawable.gpu_msigt1030, R.drawable.asus_rtx2060};
-    public String[] moboLink = {"https://www.tokopedia.com/search?st=product&q=Asus%20Strix%201080%20Ti", "https://www.tokopedia.com/search?st=product&q=Nvidia%20RTX3080%20Founder%20Edition",
-            "https://www.tokopedia.com/search?st=product&q=EVGA%20SC%20Gaming%20GTX%201070", "https://www.tokopedia.com/search?st=product&q=Zotac%201050Ti",
-            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20OC%201660%20super", "https://www.tokopedia.com/search?st=product&q=Asus%20dual%201060",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20Gaming%20X%20RX%20570", "https://www.tokopedia.com/search?st=product&q=Asus%20ROG%20Strix%20RX580",
-            "https://www.tokopedia.com/search?st=product&q=MSI%20GT%201030%20LP%20OC", "https://www.tokopedia.com/search?st=product&q=Asus%20Dual%20Evo%20RTX%202060"};
+    public int[] moboPhoto ={R.drawable.mobo_msib450tomahawkmax, R.drawable.mobo_asusrogstrixb550fgaming, R.drawable.mobo_gigabyteb460ds3h, R.drawable.mobo_asussabertoothz87, R.drawable.mobo_asusprimex570pro
+            , R.drawable.mobo_asrockb450hdv, R.drawable.mobo_gigabytez490viciong, R.drawable.mobo_asusmaximusvigene, R.drawable.mobo_gigabytex570aoruselite, R.drawable.mobo_msib550apro};
+    public String[] moboLink =  {"https://www.tokopedia.com/search?st=product&q=MSI%20B450%20Tomahawk%20MAX&navsource=home", "https://www.tokopedia.com/search?st=product&q=Asus%20ROG%20STRIX%20B550-F%20Gaming&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20B460M%20DS3H&navsource=home", "https://www.tokopedia.com/search?st=product&q=Asus%20Sabertooth%20Z87&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Asus%20PRIME%20X570-PRO&navsource=home", "https://www.tokopedia.com/search?st=product&q=Asrock%20B450M-HDV&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20Z490%20Vision%20G&navsource=home", "https://www.tokopedia.com/search?st=product&q=Asus%20Maximus%20VI%20Gene&navsource=home",
+            "https://www.tokopedia.com/search?st=product&q=Gigabyte%20X570%20AORUS%20Elite&navsource=home", "https://www.tokopedia.com/search?st=product&q=MSI%20B550-A%20PRO&navsource=home"};
 
     @NonNull
     @Override
